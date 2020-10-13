@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>DIME</title>
+    
+    <style>        
+
+    table {
+        border: 1px solid black;
+        background:black;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:105px;
+        padding-top:7px;
+        padding-left:8px;
+        padding-right:8px;
+        padding-bottom:6px;
+    }
+
+    /*
+    tr {
+         border:10px solid blue !important;
+    } */
+
+    td {
+        height:170px; /*170*/
+        width:140px;
+        border:1px solid white !important; 
+    }
+
+    img {
+        display:block;
+        width:100%;
+        height:100%;
+        pointer-events: none; /* or change curosr? */
+        /*border:0.5px solid red;*/
+    }
+    
+    .cap {
+        box-shadow:0px 0px 10px 0.9px white !important; 
+    }
+
+    /* delete */
+    .lit {
+        box-shadow:0px 0px 15px 0.9px pink !important;
+    }
+
+    </style>
+
+</head>
+<body>
+
+<!----<a href="https://www.w3schools.com">Visit W3Schools</a>  -->
+ 
+<table>
+  <tr>
+      
+  	<td id="why">
+  		<!---<a href="imgs/constellation.jpg" download>-->
+        	<img src="imgs/rice.jpg" />
+    	</a>
+    </td>
+    
+   	<td id="cow">
+        <a href="imgs/mountain.jpg" download>
+        	<img src="imgs/cheezit.jpg" />
+        </a>
+    </td>
+    
+    <td>
+        <a href="imgs/shootingStar.jpeg" download>
+            <img src="imgs/cookies1.jpg" />
+        </a>
+    </td>
+
+  </tr>
+
+
+  <tr>
+    <td>
+        <a href="imgs/jetson.png" download>
+            <img src="imgs/pepsi.jpg" />
+        </a>
+    </td>
+       
+    <td>
+        <a href="imgs/glasses.png" download>
+             <img src="imgs/chips.jpeg" />
+        </a>
+    </td>
+
+    <td>
+        <a href="imgs/gaze.jpg" download> 
+            <img src="imgs/snickers.jpg" /> 
+        </a>
+    </td>
+
+</tr>
+
+<tr>
+	<td>
+        <a href="imgs/aveMaria.png" download>
+            <img src="imgs/1poptart.jpg" />
+        </a>
+    </td>
+    
+   	<td>
+        <a href="imgs/goodday.png" download>
+            <img src="imgs/2poptart.jpg" />
+        </a>
+    </td>
+    
+    <td>
+        <a href="imgs/snellen.png" download>
+            <img src="imgs/poptartsfour.jpg" />
+         </a>
+    </td>
+
+  </tr>
+</table>
+
+        
+<script>
+
+var table = document.querySelector("table");
+var cells = table.getElementsByTagName("td"); 
+var counter = 0;
+
+localStorage.setItem('trials', counter.toString()) //no need toString(), auto converts # to string in localstorage. just leave
+//var value = localStorage.getItem('trials') //returns string
+console.log("counter: " + counter);
+//console.log("value: " + value);
+//console.log(value.typeof);
+
+//console.log(cells.length);
+for (var i = 0; i < cells.length; i++) {
+  cells[i].addEventListener('click', sprinkle);
+}
+
+/* TOGGLE 
+for (var i = 0; i < cells.length; i++) { 
+    cells[i].classList.toggle("lit");
+} */
+
+function sprinkle() {
+    if((parseInt(localStorage.getItem('trials'))) < 5) { //why value no work? convert string to # 
+        counter++;
+        localStorage.setItem('trials', counter) //no need toString()
+        console.log("counter: " + counter);
+       // this.classList.remove("lit"); //the one just clicked. specific one remove light QQ CHECK ACTUALLY DELETED
+        this.classList.add("cap");
+        return counter;
+        } 
+    else { 
+        this.onclick=false; //go further than removeEventListener
+        this.classList.remove("cap"); //change to class name for glowing
+       // this.removeEventListener("click", sprinkle) //check
+        removeLinks(); 
+
+        /* originally
+         //this.onclick=false; // goes further 
+         this.classList.remove("cap"); //change to class name for glowing
+        this.removeEventListener("click", sprinkle) //check
+        removeLinks(); 
+        */
+        
+        console.log("out of stock");
+        console.log("counter: " + localStorage.getItem('trials')); //why value no work
+        }
+};
+
+function removeLinks() {
+    console.log("removeLinks");
+    var links = document.getElementsByTagName("a");
+    for(var i=0; i < links.length; i++) {
+       links[i].removeAttribute("download");
+       links[i].href= "#"; // " " makes it go to another page when click again. still clickable
+       //console.log(links[i].href);
+}
+}
+
+/**** to be added later
+var now = new Date();
+console.log(now);
+var date = now.getDate(); //number
+var month = now.getMonth() + 1;
+localStorage.setItem("date", date);
+localStorage.setItem("month", month)
+
+parseInt(localStorage.getItem("date"));//returns string
+parseInt(localStorage.getItem("month")); //returns string
+
+var present = new Date()
+present.getDate() === parseInt(localStorage.getItem("date"));
+present.getMonth() === parseInt(localStorage.getItem("month"));
+//wont bother with year
+
+//ideally use condition when hv new images each day
+if ((present.getDate() !== parseInt(localStorage.getItem("date"))) && (present.getMonth() !== parseInt(localStorage.getItem("month")))) {
+// sprinke();
+ console.log("not same day and mnonth")
+} 
+****/
+
+</script>
+
+
+  <!---      <a href="http://dummyimage.com/68x68/000/fff" >
+        	<img src="http://dummyimage.com/68x68/000/fff" />  
+         
+        </a>-->
+<!--Sources -->
+machine images 
+poptart   https://americancandys.co.uk/product/pop-tarts-frosted-blueberry-twin-pack-3-67oz-104g/
+          https://americancandys.co.uk/wp-content/uploads/2020/01/p1.jpg
+
+poptart   https://americancandys.co.uk/product/pop-tarts-frosted-cherry-twin-pack-3-67oz-104g/
+          https://americancandys.co.uk/wp-content/uploads/2020/01/p4.jpg
+
+poptart   https://www.beachbasketbelize.com/1006-large_default/pop-tarts-breakfasttoaster-pastries-frosted-brown-sugar-cinnamon-flavored-single-serve-325-oz-2-count.jpg
+
+cheez-its https://www.roundeyesupply.com/v/vspfiles/photos/DE400020-2T.jpg
+lays      https://images.heb.com/is/image/HEBGrocery/001865742
+cookies   https://cdn3.volusion.com/no4tr.u43q3/v/vspfiles/photos/DE399990-2.jpg?v-cache=1412907612
+pepsi     https://5.imimg.com/data5/IN/DK/GP/SELLER-88087163/pepsi-2-liter-bottle-500x500.jpg
+krispies  https://images-na.ssl-images-amazon.com/images/I/81HwsESUvoL._SX425_.jpg
+snickers  https://cdn.shopify.com/s/files/1/0102/3950/8531/products/33585_snickers_bar_1.86_oz_1_800x.jpg?v=1576013642
+
+clicked images
+constellation https://i.pinimg.com/originals/5b/42/0c/5b420c9dc9c249812ce0e8e906920f1a.jpg
+star          https://miro.medium.com/max/720/1*FWaT7LduGlTMgrCiTSXCWA.jpeg
+mountain      https://s3.amazonaws.com/images.gearjunkie.com/uploads/2018/05/Kanchenjunga_as_seen_from_Gangtok.jpg
+gaze          https://i.pinimg.com/originals/44/b2/d2/44b2d2d353332dd0202db3f8a09954f0.jpg 
+snellen       http://www.eyechartmaker.com/generate.php?line1=god+is+watching+
+lyrics        https://lh3.googleusercontent.com/proxy/j_f_FuOL12GYFvfFslYGKaxZzFfIFfKiEk4Pcok1K36fGU4ts0pnmgvRAmBTNioCpvpFNaBT9S6C1BVRpuROy1GhvoJkGnp3tkDJWhHcyS9HfSdSh8Dz7w5LC8pKI-zkWbXEOT_FLK6_8Q 
+
+</body>
+</html>
+
