@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
     <title>DIME</title>
     
     <style>        
-
     table {
-        /*border: 1px solid black;*/
         background:black;
         margin-left: auto;
         margin-right: auto;
@@ -17,12 +17,7 @@
         padding-right:8px;
         padding-bottom:6px;
     }
-
-    /*
-    tr {
-         border:10px solid blue !important;
-    } */
-
+    
     td {
         height:170px; /*170*/
         width:140px;
@@ -43,12 +38,9 @@
 
 </head>
 <body>
-
-<!----<a href="https://www.w3schools.com">Visit W3Schools</a>  -->
  
 <table>
   <tr>
-      
   	<td id="why">
   		<a href="imgs/constellation.jpg" download>
         	<img src="imgs/rice.jpg" />
@@ -66,9 +58,7 @@
             <img src="imgs/cookies1.jpg" />
         </a>
     </td>
-
   </tr>
-
 
   <tr>
     <td>
@@ -88,7 +78,6 @@
             <img src="imgs/snickers.jpg" /> 
         </a>
     </td>
-
 </tr>
 
 <tr>
@@ -113,7 +102,6 @@
   </tr>
 </table>
 
-        
 <script>
 
 var table = document.querySelector("table");
@@ -123,18 +111,16 @@ var counter = 0;
 localStorage.setItem('trials', counter.toString()) //no need toString(), auto converts # to string in localstorage. just leave
 //var value = localStorage.getItem('trials') //returns string
 console.log("counter: " + counter);
-//console.log("value: " + value);
-//console.log(value.typeof);
-
-//console.log(cells.length);
-for (var i = 0; i < cells.length; i++) {
-  cells[i].addEventListener('click', sprinkle);
-}
 
 /* TOGGLE 
 for (var i = 0; i < cells.length; i++) { 
     cells[i].classList.toggle("lit");
 } */
+
+for (var i = 0; i < cells.length; i++) {
+  //console.log(cells.length);
+  cells[i].addEventListener('click', sprinkle);
+}
 
 function sprinkle() {
     if((parseInt(localStorage.getItem('trials'))) < 5) { //why value no work? convert string to # 
@@ -145,20 +131,16 @@ function sprinkle() {
         return counter;
         } 
     else { 
-        this.onclick=false; //go further than removeEventListener
-       // this.classList.remove("cap"); //change to class name for glowing
-       // this.removeEventListener("click", sprinkle) //check
+        this.onclick=false; //goes further than removeEventListener (this.removeEventListener("click", sprinkle))
         removeLinks(); 
+        console.log("out of stock");
+        console.log("counter: " + localStorage.getItem('trials')); //why value no work
 
         /* originally
-         //this.onclick=false; // goes further 
-         this.classList.remove("cap"); //change to class name for glowing
+       //this.onclick=false; 
         this.removeEventListener("click", sprinkle) //check
         removeLinks(); 
         */
-        
-        console.log("out of stock");
-        console.log("counter: " + localStorage.getItem('trials')); //why value no work
         }
 };
 
@@ -172,7 +154,7 @@ function removeLinks() {
 }
 }
 
-/**** add later
+/**** add dates later so can only download images in same day, otherwise resets to on new day...
 var now = new Date();
 console.log(now);
 var date = now.getDate(); //number
@@ -200,7 +182,7 @@ if ((present.getDate() !== parseInt(localStorage.getItem("date"))) && (present.g
 </body>
 </html>
 
-<!--  Sources 
+<!--  sources 
 machine images 
 poptart   https://americancandys.co.uk/product/pop-tarts-frosted-blueberry-twin-pack-3-67oz-104g/
           https://americancandys.co.uk/wp-content/uploads/2020/01/p1.jpg
