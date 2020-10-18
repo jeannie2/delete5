@@ -108,32 +108,19 @@ var table = document.querySelector("table");
 var cells = table.getElementsByTagName("td"); 
 var counter = 0;
 
-localStorage.setItem('trials', counter.toString()) //no need toString(), auto converts # to string in localstorage. just leave
-//var value = localStorage.getItem('trials') //returns string
-console.log("counter: " + counter);
-
+if(localStorage.getItem('trials') === null) { //if trials does not exist
+    console.log("spaceparty");
+    localStorage.setItem('trials', counter.toString()) //no need toString(), auto converts # to string in localstorage. just leave
+    //var value = localStorage.getItem('trials') //returns string
+    console.log("counter: " + counter);
+} else{ //if trials exists
+    console.log('mirror')
+}
 /* TOGGLE 
 for (var i = 0; i < cells.length; i++) { 
     cells[i].classList.toggle("lit");
 } */
-	
-	
-if(!localStorage.getItem('trials')) {
-    console.log("spaceparty");
-}
-	
-   var test = {
-        trials: 1,
-        date: 0
-    } 
 
-    localStorage.setItem('test', JSON.stringify(test));
-    
-    var freshtest = localStorage.getItem('test');
-
-    console.log("test: ",  JSON.parse(freshtest.trials));
-    console.log(typeof JSON.parse(freshtest.trials));
-	
 for (var i = 0; i < cells.length; i++) {
   //console.log(cells.length);
   cells[i].addEventListener('click', sprinkle);
