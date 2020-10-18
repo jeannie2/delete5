@@ -109,13 +109,11 @@ var cells = table.getElementsByTagName("td");
 var counter = 0;
 
 if(localStorage.getItem('trials') === null) { //if trials does not exist
-    console.log("spaceparty");
     localStorage.setItem('trials', counter.toString()) //no need toString(), auto converts # to string in localstorage. just leave
     //var value = localStorage.getItem('trials') //returns string
     console.log("counter: " + counter);
-} else{ //if trials exists
-    console.log('mirror')
-}
+} 
+
 /* TOGGLE 
 for (var i = 0; i < cells.length; i++) { 
     cells[i].classList.toggle("lit");
@@ -126,9 +124,10 @@ for (var i = 0; i < cells.length; i++) {
   cells[i].addEventListener('click', sprinkle);
 }
 
+//keep track on a browser of a given computer. different browser or diff computer(?) restarts
 function sprinkle() {
     if((parseInt(localStorage.getItem('trials'))) < 5) { //why value no work? convert string to # 
-        counter++;
+        counter++; //how recall value? bc return?
         localStorage.setItem('trials', counter) //no need toString()
         console.log("counter: " + counter);
         this.classList.add("cap");
