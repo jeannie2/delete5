@@ -121,6 +121,23 @@ for (var i = 0; i < cells.length; i++) {
 if(!localStorage.getItem('trials')) {
     console.log("spaceparty");
 }
+	
+	
+    var test = {
+        trials: 0,
+        date: 0
+    } 
+
+    localStorage.setItem('test', JSON.stringify(test));
+    
+    var freshtest = localStorage.getItem('test');
+
+    console.log("test: ",  JSON.parse(freshtest));
+
+    for (var i = 0; i < cells.length; i++) {
+    //console.log(cells.length);
+    cells[i].addEventListener('click', sprinkle);
+    }
 
 for (var i = 0; i < cells.length; i++) {
   //console.log(cells.length);
